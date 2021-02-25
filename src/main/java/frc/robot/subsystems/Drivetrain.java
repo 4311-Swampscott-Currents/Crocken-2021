@@ -7,8 +7,11 @@ import com.kauailabs.navx.frc.*;
 
 import org.swampscottcurrents.serpentframework.*;
 
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.GyroBase;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.commands.TestMotorCommand;
 
 public class Drivetrain extends SerpentSubsystem {
     private WPI_TalonFX frontLeftMotor = new WPI_TalonFX(0);
@@ -16,7 +19,7 @@ public class Drivetrain extends SerpentSubsystem {
     private WPI_TalonFX backLeftMotor = new WPI_TalonFX(2);
     private WPI_TalonFX backRightMotor = new WPI_TalonFX(3);
 
-    private AHRS gyroscope = new AHRS();
+    private ADXRS450_Gyro gyroscope = new ADXRS450_Gyro();
 
     private DifferentialDrive differentialDrive = new DifferentialDrive(frontLeftMotor, frontRightMotor);
 
@@ -26,7 +29,10 @@ public class Drivetrain extends SerpentSubsystem {
         backLeftMotor.follow(frontLeftMotor);
         backRightMotor.follow(frontRightMotor);
 
+        differentialDrive.setSafetyEnabled(false);
         differentialDrive.setRightSideInverted(false);
+
+        setDefaultCommand(new TestMotorCommand(new VictorSP(0), this));
     }
 
     public void drivePercent(double leftSpeed, double rightSpeed) {

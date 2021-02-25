@@ -1,0 +1,9 @@
+[NetworkTables Storage 3.0]
+string "/Preferences/.type"="RobotPreferences"
+boolean "/Preferences/sf.joystick"=true
+double "/Preferences/sf.joystick/axes/Throttle Axis"=3
+double "/Preferences/sf.joystick/axes/X Axis"=0
+double "/Preferences/sf.joystick/axes/Y Axis"=1
+double "/Preferences/sf.joystick/axes/Z Axis"=2
+double "/Preferences/sf.joystick/button/Test Motor Button"=1
+double "/Preferences/sf.joystick/parameter/Deadzone"=0.1

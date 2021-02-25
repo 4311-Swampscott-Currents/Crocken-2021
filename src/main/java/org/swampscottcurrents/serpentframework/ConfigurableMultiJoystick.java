@@ -109,8 +109,7 @@ public class ConfigurableMultiJoystick {
             buttons.put(key, prefs.getInt("sf.joystick/button/" + key, 0));
             
             allEntryListeners.add(nt.addEntryListener(nt.getTable("Preferences").getEntry("sf.joystick/button/" + key), notification -> {
-                buttons.remove(key);
-                buttons.put(key, (int)notification.value.getDouble());
+                synchronized(this) { buttons.replace(key, (int)notification.value.getDouble()); }
                 loadNewJoysticks();
             }, EntryListenerFlags.kNew | EntryListenerFlags.kUpdate | EntryListenerFlags.kDelete));
         }
@@ -121,8 +120,7 @@ public class ConfigurableMultiJoystick {
             axes.put(key, prefs.getInt("sf.joystick/axes/" + key, 0));
             
             allEntryListeners.add(nt.addEntryListener(nt.getTable("Preferences").getEntry("sf.joystick/axes/" + key), notification -> {
-                axes.remove(key);
-                axes.put(key, (int)notification.value.getDouble());
+                synchronized(this) { axes.replace(key, (int)notification.value.getDouble()); }
                 loadNewJoysticks();
             }, EntryListenerFlags.kNew | EntryListenerFlags.kUpdate | EntryListenerFlags.kDelete));
         }
@@ -133,8 +131,7 @@ public class ConfigurableMultiJoystick {
             controlParameters.put(key, prefs.getDouble("sf.joystick/parameter/" + key, 0));
             
             allEntryListeners.add(nt.addEntryListener(nt.getTable("Preferences").getEntry("sf.joystick/parameter/" + key), notification -> {
-                controlParameters.remove(key);
-                controlParameters.put(key, notification.value.getDouble());
+                synchronized(this) { controlParameters.replace(key, notification.value.getDouble()); }
             }, EntryListenerFlags.kNew | EntryListenerFlags.kUpdate | EntryListenerFlags.kDelete));
         }
     }

@@ -16,10 +16,11 @@ public class MainJoystick extends ConfigurableMultiJoystick {
     /** This function returns a map of all default button bindings.  It should be overridden when defining new behaviors. */
     public HashMap<String, Integer> getDefaultButtonBindings() {
         HashMap<String, Integer> data = super.getDefaultButtonBindings();
-        data.put(RUN_TEST_MOTOR_BUTTON, 0);
+        data.put(RUN_TEST_MOTOR_BUTTON, 1);
+        data.put(SWAP_DRIVE_ORIENTATION_BUTTON, 2);
         return data;
     }
-
+  
     /** This function returns a map of all default axes bindings.  It should be overridden when defining new behaviors. */
     public HashMap<String, Integer> getDefaultAxes() {
         HashMap<String, Integer> data = super.getDefaultAxes();

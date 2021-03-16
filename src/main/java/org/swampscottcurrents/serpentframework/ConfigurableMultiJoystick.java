@@ -98,10 +98,10 @@ public class ConfigurableMultiJoystick {
             }
         }, EntryListenerFlags.kNew | EntryListenerFlags.kUpdate | EntryListenerFlags.kDelete));
 
-        buttons = new HashMap<String, Integer>();
-        axes = new HashMap<String, Integer>();
-        controlParameters = new HashMap<String, Double>();
-        for(String key : getDefaultButtonBindings().keySet()) {
+        buttons = getDefaultButtonBindings();
+        axes = getDefaultAxes();
+        controlParameters = getDefaultControlParameters();
+        for(String key : buttons.keySet()) {
             buttonStates.put(key, ButtonState.Up);
             if(!prefs.containsKey("sf.joystick/button/" + key)) {
                 prefs.putInt("sf.joystick/button/" + key, buttons.get(key));
@@ -113,7 +113,7 @@ public class ConfigurableMultiJoystick {
                 loadNewJoysticks();
             }, EntryListenerFlags.kNew | EntryListenerFlags.kUpdate | EntryListenerFlags.kDelete));
         }
-        for(String key : getDefaultAxes().keySet()) {
+        for(String key : axes.keySet()) {
             if(!prefs.containsKey("sf.joystick/axes/" + key)) {
                 prefs.putInt("sf.joystick/axes/" + key, axes.get(key));
             }
@@ -124,7 +124,7 @@ public class ConfigurableMultiJoystick {
                 loadNewJoysticks();
             }, EntryListenerFlags.kNew | EntryListenerFlags.kUpdate | EntryListenerFlags.kDelete));
         }
-        for(String key : getDefaultControlParameters().keySet()) {
+        for(String key : controlParameters.keySet()) {
             if(!prefs.containsKey("sf.joystick/parameter/" + key)) {
                 prefs.putDouble("sf.joystick/parameter/" + key, controlParameters.get(key));
             }

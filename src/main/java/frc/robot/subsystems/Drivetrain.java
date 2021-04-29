@@ -1,23 +1,22 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.InvertType;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.*;
 import com.kauailabs.navx.frc.*;
 
 import org.swampscottcurrents.serpentframework.*;
 
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import frc.robot.commands.OperatorControlCommand;
+import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.drive.*;
+import frc.robot.commands.*;
 
 /** Represents the robot's drivetrain, providing controls for robot movement and positioning. */
 public class Drivetrain extends SerpentSubsystem {
 
-    private WPI_TalonFX frontLeftMotor = new WPI_TalonFX(11);
-    private WPI_TalonFX frontRightMotor = new WPI_TalonFX(13);
-    private WPI_TalonFX backLeftMotor = new WPI_TalonFX(12);
-    private WPI_TalonFX backRightMotor = new WPI_TalonFX(14);
+    private final WPI_TalonFX frontLeftMotor = new WPI_TalonFX(04);
+    private final WPI_TalonFX frontRightMotor = new WPI_TalonFX(02);
+    private final WPI_TalonFX backLeftMotor = new WPI_TalonFX(01);
+    private final WPI_TalonFX backRightMotor = new WPI_TalonFX(03);
 
     private AHRS gyroscope = new AHRS();
 
@@ -40,8 +39,8 @@ public class Drivetrain extends SerpentSubsystem {
         backLeftMotor.setNeutralMode(NeutralMode.Brake);
         backRightMotor.setNeutralMode(NeutralMode.Brake);
 
-        //setDefaultCommand(new TestMotorCommand(this));
-        setDefaultCommand(new OperatorControlCommand(this));
+        setDefaultCommand(new TestMotorCommand(this));
+        //setDefaultCommand(new OperatorControlCommand(this));
     }
 
     /** Sets the drivetrain motor outputs to the specified speeds, in percent. */

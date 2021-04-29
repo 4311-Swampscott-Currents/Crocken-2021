@@ -1,12 +1,14 @@
 package frc.robot.commands;
 
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import org.swampscottcurrents.serpentframework.SerpentCommand;
 
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.MainJoystick;
@@ -24,10 +26,11 @@ public class TestMotorCommand extends SerpentCommand {
 
     public TestMotorCommand(Subsystem... systems) {
         robot = Robot.getInstance();
-        firstMotor = new Spark(0);
-        secondMotor = new Spark(1);
-        thirdMotors = new Spark(2);
+        firstMotor = new Spark(7);
+        secondMotor = new WPI_VictorSPX(21);
+        thirdMotors = new Spark(4);
         fourthMotor = new WPI_TalonFX(5);
+
         addRequirements(systems);
     }
 
@@ -37,6 +40,11 @@ public class TestMotorCommand extends SerpentCommand {
         SmartDashboard.putNumber("Second", secondSpeed = 0);
         SmartDashboard.putNumber("Third", thirdSpeed = 0);
         SmartDashboard.putNumber("Fourth", 0);
+        
+        DoubleSolenoid d = new DoubleSolenoid(0, 1);
+        DoubleSolenoid e = new DoubleSolenoid(2, 3);
+        e.set(Value.kOff);
+        d.set(Value.kOff);
     }
 
     @Override

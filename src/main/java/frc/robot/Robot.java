@@ -11,11 +11,15 @@ public class Robot extends FastRobot {
 
     public final MainJoystick joystick;    
     public final Drivetrain drivetrain;
+    public final Intake intake;
+    public final Shooter shooter;
 
     public Robot() {
         instance = this;
         joystick = new MainJoystick();
         drivetrain = new Drivetrain();
+        intake = new Intake();
+        shooter = new Shooter();
     }
 
     @Override

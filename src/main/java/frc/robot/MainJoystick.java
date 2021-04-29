@@ -7,6 +7,7 @@ import org.swampscottcurrents.serpentframework.*;
 public class MainJoystick extends ConfigurableMultiJoystick {
     public static final String RUN_TEST_MOTOR_BUTTON = "Test Motor Button";
     public static final String SWAP_DRIVE_ORIENTATION_BUTTON = "Swap Driving Orientation Button";
+    public static final String TOGGLE_INTAKE_BUTTON = "Toggle Intake Button";
 
     public static final String X_AXIS = "X Axis";
     public static final String Y_AXIS = "Y Axis";
@@ -18,6 +19,7 @@ public class MainJoystick extends ConfigurableMultiJoystick {
         HashMap<String, Integer> data = super.getDefaultButtonBindings();
         data.put(RUN_TEST_MOTOR_BUTTON, 1);
         data.put(SWAP_DRIVE_ORIENTATION_BUTTON, 2);
+        data.put(TOGGLE_INTAKE_BUTTON, 3);
         return data;
     }
   

@@ -13,7 +13,7 @@ import frc.robot.commands.*;
 public class Intake extends SerpentSubsystem {
 
     private final DoubleSolenoid intakePistons = new DoubleSolenoid(0, 1);
-    private final WPI_VictorSPX intakeMotor = new WPI_VictorSPX(21);
+    private final WPI_VictorSPX intakeMotor = new WPI_VictorSPX(20);
 
     public Intake() {
         intakeMotor.setNeutralMode(NeutralMode.Coast);
@@ -23,12 +23,12 @@ public class Intake extends SerpentSubsystem {
 
     /** Actuates the intake solenoid, lifting the intake into the frame. */
     public void raiseIntake() {
-        intakePistons.set(Value.kReverse);
+        intakePistons.set(Value.kForward);
     }
 
     /** Actuates the intake solenoid, lowering the intake to the ground. */
     public void lowerIntake() {
-        intakePistons.set(Value.kForward);
+        intakePistons.set(Value.kReverse);
     }
 
     /** Turns on the intake motor at the default speed, spinning wheels to collect balls. */

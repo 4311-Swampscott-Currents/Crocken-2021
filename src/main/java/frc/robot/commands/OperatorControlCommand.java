@@ -57,7 +57,7 @@ public class OperatorControlCommand extends SerpentCommand {
         if(true) {
             //return;
         }
-        if(isControlFieldOriented) {
+        if(false && isControlFieldOriented) {
             Quaternion2D robotOrientation = Quaternion2D.fromDegrees(-90 + drivetrain.getGyroscopeRotation());
 
             double x = -joystick.getAxis(MainJoystick.Y_AXIS) * 0.75;
@@ -96,12 +96,12 @@ public class OperatorControlCommand extends SerpentCommand {
         else {
             double error = Quaternion2D.fromDegrees(drivetrain.getGyroscopeRotation()).toDegrees();
 
-            drivetrain.driveDifferential(-joystick.getAxis(MainJoystick.Y_AXIS), 0 * -joystick.getAxis(MainJoystick.X_AXIS));
+            drivetrain.driveDifferential(joystick.getAxis(MainJoystick.Y_AXIS), -joystick.getAxis(MainJoystick.X_AXIS));
         }
-        if(joystick.getButtonReleased(MainJoystick.SWAP_DRIVE_ORIENTATION_BUTTON)) {
+        if(false && joystick.getButtonReleased(MainJoystick.SWAP_DRIVE_ORIENTATION_BUTTON)) {
             isControlFieldOriented = !isControlFieldOriented;
         }
-        if(joystick.getButtonReleased(MainJoystick.RUN_TEST_MOTOR_BUTTON)) {
+        if(false && joystick.getButtonReleased(MainJoystick.RUN_TEST_MOTOR_BUTTON)) {
             System.out.println("CHANGE");
             drivetrain.resetGyroscope();
         }

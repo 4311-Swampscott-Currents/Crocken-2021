@@ -16,5 +16,5 @@ public class Constants {
 
     public static final double SPINNER_DEFAULT_SPEED_PERCENT = 0.65;
     public static final double TOWER_DEFAULT_SPEED_PERCENT = 0.5;
-    public static final double INTAKE_DEFAULT_SPEED_PERCENT = 0.5;
+    public static final double INTAKE_DEFAULT_SPEED_PERCENT = 1;
 }

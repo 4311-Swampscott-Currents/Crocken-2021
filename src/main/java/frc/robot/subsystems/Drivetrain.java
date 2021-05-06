@@ -39,8 +39,8 @@ public class Drivetrain extends SerpentSubsystem {
         backLeftMotor.setNeutralMode(NeutralMode.Brake);
         backRightMotor.setNeutralMode(NeutralMode.Brake);
 
-        setDefaultCommand(new TestMotorCommand(this));
-        //setDefaultCommand(new OperatorControlCommand(this));
+        //setDefaultCommand(new TestMotorCommand(this));
+        setDefaultCommand(new OperatorControlCommand(this));
     }
 
     /** Sets the drivetrain motor outputs to the specified speeds, in percent. */

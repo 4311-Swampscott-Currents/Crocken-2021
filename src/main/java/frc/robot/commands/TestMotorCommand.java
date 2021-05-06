@@ -33,6 +33,13 @@ public class TestMotorCommand extends SerpentCommand {
 
         addRequirements(systems);
     }
+    
+        
+    DoubleSolenoid d = new DoubleSolenoid(0, 1);
+    Solenoid e = new Solenoid(2);
+    Solenoid f = new Solenoid(3);
+    
+    Compressor c = new Compressor();
 
     @Override
     public void initialize() {
@@ -40,11 +47,10 @@ public class TestMotorCommand extends SerpentCommand {
         SmartDashboard.putNumber("Second", secondSpeed = 0);
         SmartDashboard.putNumber("Third", thirdSpeed = 0);
         SmartDashboard.putNumber("Fourth", 0);
-        
-        DoubleSolenoid d = new DoubleSolenoid(0, 1);
-        DoubleSolenoid e = new DoubleSolenoid(2, 3);
-        e.set(Value.kOff);
-        d.set(Value.kOff);
+        c.setClosedLoopControl(true);
+        d.set(Value.kReverse);
+        e.set(false);
+        f.set(false);
     }
 
     @Override
@@ -60,6 +66,9 @@ public class TestMotorCommand extends SerpentCommand {
             secondMotor.stopMotor();
             thirdMotors.stopMotor();
             fourthMotor.stopMotor();
+        }
+        if(robot.joystick.getButtonReleased(MainJoystick.RUN_TEST_MOTOR_BUTTON)) {
+            d.toggle();
         }
     }
 

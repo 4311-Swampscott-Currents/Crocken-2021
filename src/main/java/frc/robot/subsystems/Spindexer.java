@@ -11,7 +11,7 @@ import frc.robot.Constants;
 
 public class Spindexer extends SerpentSubsystem {
 
-    private final WPI_VictorSPX spinnerMotor = new WPI_VictorSPX(20);
+    private final WPI_VictorSPX spinnerMotor = new WPI_VictorSPX(21);
     private final Spark leftTowerMotor = new Spark(7);
     private final Spark rightTowerMotor = new Spark(8);
 

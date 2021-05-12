@@ -7,6 +7,7 @@ import org.swampscottcurrents.serpentframework.SerpentCommand;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.*;
 
+/** Causes the intake to move into the lowered position and pick up balls. */
 public class IntakePickUpBallsCommand extends SerpentCommand {
 
     private Robot robot = Robot.getInstance();
@@ -29,11 +30,6 @@ public class IntakePickUpBallsCommand extends SerpentCommand {
         if(robot.joystick.getButtonReleased(MainJoystick.TOGGLE_INTAKE_BUTTON)) {
             cancel();
         }
-    }
-
-    @Override
-    public boolean isFinished() {
-        return false;
     }
 
     @Override

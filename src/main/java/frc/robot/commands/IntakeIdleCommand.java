@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.*;
 import frc.robot.subsystems.*;
 
+/** Causes the intake to rest in the raised position. */
 public class IntakeIdleCommand extends SerpentCommand {
 
     private final Robot robot;

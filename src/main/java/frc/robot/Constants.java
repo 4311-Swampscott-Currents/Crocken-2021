@@ -2,6 +2,9 @@ package frc.robot;
 
 public class Constants {
 
+    public static final double DEFAULT_DRIVESTRAIGHT_SPEED_INCHES_PER_SECOND = 24;
+    public static final double DEFAULT_TURNTOANGLE_SPEED_INCHES_PER_SECOND = 12;
+
     public static final double TALONFX_MAX_ROTATIONS_PER_SECOND = 6250;
     public static final double TALONFX_ENCODER_TICKS_PER_ROTATION = 2048;
     public static final double WHEEL_ROTATIONS_PER_MOTOR_ROTATION = 1 / 10.71;
@@ -17,4 +20,6 @@ public class Constants {
     public static final double SPINNER_DEFAULT_SPEED_PERCENT = 0.65;
     public static final double TOWER_DEFAULT_SPEED_PERCENT = 0.5;
     public static final double INTAKE_DEFAULT_SPEED_PERCENT = 1;
+    public static final double TOWER_ULTRASONIC_BALL_THRESHOLD_INCHES = 1.5;
+    public static final double WINCH_DEFAULT_SPEED_PERCENT = 0.5;
 }

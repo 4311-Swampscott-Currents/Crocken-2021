@@ -21,6 +21,7 @@ public class TurnToAngleCommand extends SerpentCommand {
         rotationGoal = degrees;
         rotationSpeed = speed / Constants.WHEEL_CIRCUMFERENCE_INCHES / Constants.WHEEL_ROTATIONS_PER_MOTOR_ROTATION / Constants.TALONFX_MAX_ROTATIONS_PER_SECOND;
         currentErrorDegrees = Double.MAX_VALUE;
+        addRequirements(drivetrain);
     }
 
     @Override

@@ -15,6 +15,7 @@ import frc.robot.MainJoystick;
 import frc.robot.Robot;
 import frc.robot.subsystems.Drivetrain;
 
+/** A debug command utilized for testing motors. */
 public class TestMotorCommand extends SerpentCommand {
 
     private Robot robot;

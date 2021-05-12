@@ -7,20 +7,25 @@ import com.ctre.phoenix.motorcontrol.can.*;
 import org.swampscottcurrents.serpentframework.*;
 
 import edu.wpi.first.wpilibj.*;
-import frc.robot.Constants;
+import frc.robot.*;
+import frc.robot.commands.*;
 
 public class Spindexer extends SerpentSubsystem {
 
     private final WPI_VictorSPX spinnerMotor = new WPI_VictorSPX(21);
+
+    private final Ultrasonic towerUltrasonic = new Ultrasonic(1, 0);
     private final Spark leftTowerMotor = new Spark(7);
     private final Spark rightTowerMotor = new Spark(8);
 
     public Spindexer() {
         spinnerMotor.setNeutralMode(NeutralMode.Coast);
+
+        Ultrasonic.setAutomaticMode(true);
         leftTowerMotor.setInverted(true);
         rightTowerMotor.setInverted(false);
 
-        //SET DEFAULT COMMAND
+        setDefaultCommand(new SpindexerIdleCommand(this));
     }
 
     /** Turns on the spindexer motor at the default speed, rotating balls around the indexing tub. */
@@ -53,6 +58,16 @@ public class Spindexer extends SerpentSubsystem {
     public void stopTower() {
         leftTowerMotor.stopMotor();
         rightTowerMotor.stopMotor();
+    }
+
+    /** Returns the distance, in inches, from the ultrasonic sensor on the tower to the object in front of it. */
+    public double getTowerUltrasonicDistance() {
+        return towerUltrasonic.getRangeInches();
+    }
+
+    /** Returns whether a ball is currently at the top of the tower, in front of the ultrasonic. */
+    public boolean isBallInFrontOfUltrasonic() {
+        return getTowerUltrasonicDistance() < Constants.TOWER_ULTRASONIC_BALL_THRESHOLD_INCHES;
     }
 
     @Override

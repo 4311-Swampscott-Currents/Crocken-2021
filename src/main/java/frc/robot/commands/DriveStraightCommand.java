@@ -12,12 +12,13 @@ public class DriveStraightCommand extends LogixCommand {
     private final double rotationGoal;
     private final double rotationSpeed;
 
-    /** Creates a new DriveStraightCommand that will drive the robot forward the specified length at the specified speed. */
+    /** Creates a new DriveStraightCommand that will drive the robot forward the specified length at the specified speed, in inches per second. */
     public DriveStraightCommand(double inches, double speed) {
         rotationGoal = inches / Constants.WHEEL_CIRCUMFERENCE_INCHES / Constants.WHEEL_ROTATIONS_PER_MOTOR_ROTATION;
         rotationSpeed = speed / Constants.WHEEL_CIRCUMFERENCE_INCHES / Constants.WHEEL_ROTATIONS_PER_MOTOR_ROTATION / Constants.TALONFX_MAX_ROTATIONS_PER_SECOND;
 
         Drivetrain dt = Robot.getInstance().drivetrain;
+        addRequirements(dt);
 
         getLogixController()
             .run(() -> dt.resetEncoders())
